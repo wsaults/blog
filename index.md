@@ -1,4 +1,4 @@
-## A Journey to the Center of SwiftUI with Firebase 
+# A Journey to the Center of SwiftUI with Firebase 
 #### June 25th 2020
 
 ## For this entry we'll be using: 🧐
