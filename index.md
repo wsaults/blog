@@ -45,7 +45,7 @@ First do the following:
 - Create a group called `Views`
 
 Your project explorer should look like this. 
-![File Explorer](https://github.com/wsaults/Knowledge-Database/blob/master/Coding/Swift/ToDoFirebaseExplorer_1.png?raw=true)
+![File Explorer](https://github.com/wsaults/Knowledge-Database/blob/master/Coding/Swift/ToDoFirebaseExplorer_1--small.png?raw=true)
 
 > Keep the following architecture in mind as well build our Todo App. This will drive how our components communicate and interact.
 
