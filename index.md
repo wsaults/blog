@@ -20,7 +20,7 @@ Today we're going to take a look at writing a simple Todo app using Swift UI tha
 Yep, it's gone 👋. Instead when we look in the Xcode fire explorer all we see is our new `ToDoFirebaseApp.swift` file.
 There's not much here... but it's all you need now to launch the app, phew 😅.
 
-```
+```swift
 import SwiftUI
 
 @main
@@ -35,6 +35,31 @@ struct ToDoFirebaseApp: App {
 
 ### Next stop, TaskListView! 🙌
 This view will contain the meat of our application. By the end of this post we'll be able to add, update, and complete tasks which are synced with Firebase.
+
+Let's start by adding a `NavigationView` to a new `TaskListView` `SwiftUI` file which we'll save in a new `Views` group inside of `Xcode`.
+
+#### Here's the steps:
+- Create a new Group `Views`
+- Create a new SwiftUI file `TaskListView` inside of `Views`
+- Replace the `body` contents with a `NavigationView`
+
+Here's what you'll have.
+```swift
+import SwiftUI
+
+struct TaskListView: View {    
+    var body: some View {
+        NavigationView {
+        }
+    }
+}
+
+struct TaskListView_Previews: PreviewProvider {
+    static var previews: some View {
+        TaskListView()
+    }
+}
+```
 
 
 Find top Swift development talent on [Toptal.com](https://www.toptal.com/swift).
