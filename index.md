@@ -1,12 +1,14 @@
 ## A Journey to the Center of SwiftUI with Firebase
 #### June 25th 2020
 
-> Note: For this entry we'll be using:
+### For this entry we'll be using:
 - Xcode Version 12.0 beta (12A6159)
 - iOS 14.0
 - Firebase
 
 
+
+Find top swift development talent on [Toptal.com](https://www.toptal.com/swift).
 
 
 
