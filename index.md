@@ -44,7 +44,7 @@ First do the following:
 - Create a group called `ViewModels`
 - Create a group called `Views`
 
-[View-ViewModel-Repo](https://github.com/wsaults/Knowledge-Database/blob/master/Coding/Swift/View-ViewModel-Repo.png)
+![View-ViewModel-Repo](https://raw.githubusercontent.com/wsaults/Knowledge-Database/master/Coding/Swift/View-ViewModel-Repo.png)
 
 ### Next stop, TaskListView! 🙌
 This view will contain the meat of our application. By the end of this post we'll be able to add, update, and complete tasks which are synced with Firebase.
