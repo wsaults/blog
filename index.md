@@ -1,12 +1,12 @@
 ## A Journey to the Center of SwiftUI with Firebase 
 #### June 25th 2020
 
-### For this entry we'll be using: 🧐
+## For this entry we'll be using: 🧐
 - Xcode Version 12.0 beta (12A6159)
 - iOS 14.0
 - Firebase
 
-### Here's the plan 📖
+## Here's the plan 📖
 Today we're going to take a look at writing a simple Todo app using Swift UI that's been updated for Xcode 12 beta and iOS 14. 
 - First we'll discuss the removal of AppDelegate/SceneDelegate
 - Then we'll jump into structuring our code using views, viewmodels, repositories, models, and services
@@ -16,7 +16,7 @@ Today we're going to take a look at writing a simple Todo app using Swift UI tha
 
 > Note: You should be comfortable with: cocoapods, Firebase console setup, and Xcode project setup. I won't be diving into these setup steps, You can get up to speed by following the following Firebase video tutorial (which also happens to be the content for this post) [SwiftUI/Firebase Video Tutorial part 1](https://www.youtube.com/watch?v=4RUeW5rUcww).
 
-### Dude, where's my AppDelegate and SceneDelegate??? 🤔
+## Dude, where's my AppDelegate and SceneDelegate??? 🤔
 Yep, it's gone 👋. Instead when we look in the Xcode fire explorer all we see is our new `ToDoFirebaseApp.swift` file.
 There's not much here... but it's all you need now to launch the app, phew 😅.
 
@@ -33,7 +33,7 @@ struct ToDoFirebaseApp: App {
 }
 ```
 
-### Models, Repos, and ViewModels. Oh my! 😱
+## Models, Repos, and ViewModels. Oh my! 😱
 Ok, let's setup our project structure that we'll use going forward.
 
 First do the following:
@@ -60,19 +60,19 @@ Your project explorer should look like this.
 
 You're doing awesome! Now, let's write some code! 💻
 
-### Next stop, TaskListView! 🚂 🙌
+## Next stop, TaskListView! 🚂 🙌
 This view will contain the meat of our application. By the end of this post we'll be able to add, update, and complete tasks which are synced with Firebase.
 
 Let's start by adding a `NavigationView` to a new `TaskListView` `SwiftUI` file which we'll save in our `Views` group.
 
-#### Here's the steps:
+### Here's the steps:
 - Create a new SwiftUI file `TaskListView` inside of `Views`
 - Replace the `body` contents with a `NavigationView`
 - Create a list, add button, and navigation sugar 🍰
 - Create our model, repository, and viewModels
 - Update our `ToDoFirebaseApp` file to load the `TaskListView`
 
-##### Here's what you'll have.
+#### Here's what you'll have.
 ```swift
 import SwiftUI
 
@@ -90,7 +90,7 @@ struct TaskListView_Previews: PreviewProvider {
 }
 ```
 
-##### It's list time! ⏲
+#### It's list time! ⏲
 Let's update our `TaskListView` body to look like this...
 ```swift
 var body: some View {
@@ -115,7 +115,7 @@ var body: some View {
     }
 ```
 
-##### There be models 🐉
+#### There be models 🐉
 Now go ahead and create `Task.swift` inside your models group.
 
 ```swift
@@ -132,7 +132,7 @@ struct Task: Codable, Identifiable {
 }
 ```
 
-##### Now update your `ToDoFirebaseApp.swift` `body` with our `TaskListView`.
+#### Now update your `ToDoFirebaseApp.swift` `body` with our `TaskListView`.
 ```swift
 var body: some Scene {
     WindowGroup {
