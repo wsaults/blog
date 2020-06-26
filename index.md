@@ -378,6 +378,14 @@ init() {
 And that's it! You're now ready to add tasks to your Firebase Firestore!!
 Thanks for joining me on this adventure.
 
-You can view the entire project on [github](https://github.com/wsaults/ToDoFirebaseSwiftUI)
+You can view the entire project on [github](https://github.com/wsaults/ToDoFirebaseSwiftUI).
 
 Find top Swift development talent on [Toptal.com](https://www.toptal.com/swift).
+
+
+---
+
+### Things to make this post better:
+- Add details to the repository and view models
+- Add screenshots of the app UI state
+- Add more notes about why Swift/SwiftUI is so Rad.
