@@ -44,9 +44,19 @@ First do the following:
 - Create a group called `ViewModels`
 - Create a group called `Views`
 
+> Keep the following architecture in mind as well build our Todo App. This will drive how our components communicate and interact.
+
 ![View-ViewModel-Repo](https://raw.githubusercontent.com/wsaults/Knowledge-Database/master/Coding/Swift/View-ViewModel-Repo.png)
 
-### Next stop, TaskListView! 🙌
+- Views represent the portion visible to the user.
+- ViewModels are responsible for holding the data the populates our views.
+- Models represent the structure of our data. eg: user, task, or 🚗.
+- Repositories will communicate with our data store (Firebase) to perform CRUD operations.
+- Storge represents the Firebase db.
+
+You're doing awesome! Now, let's write some code! 💻
+
+### Next stop, TaskListView! 🚂 🙌
 This view will contain the meat of our application. By the end of this post we'll be able to add, update, and complete tasks which are synced with Firebase.
 
 Let's start by adding a `NavigationView` to a new `TaskListView` `SwiftUI` file which we'll save in a new `Views` group inside of `Xcode`.
