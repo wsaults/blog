@@ -18,7 +18,7 @@ Today we're going to take a look at writing a simple Todo app using Swift UI tha
 
 ### Dude, where's my AppDelegate and SceneDelegate??? 🤔
 Yep, it's gone 👋. Instead when we look in the Xcode fire explorer all we see is our new `ToDoFirebaseApp.swift` file.
-There's not much here... but it's all you need now to launch the app, phew.
+There's not much here... but it's all you need now to launch the app, phew 😅.
 
 ```
 import SwiftUI
@@ -33,8 +33,11 @@ struct ToDoFirebaseApp: App {
 }
 ```
 
+### Next stop, TaskListView! 🙌
+This view will contain the meat of our application. By the end of this post we'll be able to add, update, and complete tasks which are synced with Firebase.
 
-Find top swift development talent on [Toptal.com](https://www.toptal.com/swift).
+
+Find top Swift development talent on [Toptal.com](https://www.toptal.com/swift).
 
 
 
