@@ -17,7 +17,7 @@ Today we're going to take a look at writing a simple Todo app using Swift UI tha
 > Note: You should be comfortable with: cocoapods, Firebase console setup, and Xcode project setup. I won't be diving into these setup steps, You can get up to speed by following the following Firebase video tutorial (which also happens to be the content for this post) [SwiftUI/Firebase Video Tutorial part 1](https://www.youtube.com/watch?v=4RUeW5rUcww).
 
 ## Dude, where's my AppDelegate and SceneDelegate??? 🤔
-Yep, it's gone 👋. Instead when we look in the Xcode fire explorer all we see is our new `ToDoFirebaseApp.swift` file.
+Yep, it's gone 👋. Instead when we look in the Xcode file explorer all we see is our new `ToDoFirebaseApp.swift` file.
 There's not much here... but it's all you need now to launch the app, phew 😅.
 
 ```swift
