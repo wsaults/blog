@@ -61,6 +61,14 @@ struct TaskListView_Previews: PreviewProvider {
 }
 ```
 
+Now update your `ToDoFirebaseApp.swift` `body` with our `TaskListView`.
+```swift
+var body: some Scene {
+    WindowGroup {
+        TaskListView() // <-- Replace ContentView() with this
+    }
+}
+```
 
 Find top Swift development talent on [Toptal.com](https://www.toptal.com/swift).
 
