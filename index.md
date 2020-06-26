@@ -1,4 +1,5 @@
-## Welcome to GitHub Pages
+## A Journey to the Center of SwiftUI with Firebase
+#### June 25th 2020
 
 You can use the [editor on GitHub](https://github.com/wsaults/blog/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
