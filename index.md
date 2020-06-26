@@ -11,8 +11,10 @@ Today we're going to take a look at writing a simple Todo app using Swift UI tha
 - First we'll discuss the removal of AppDelegate/SceneDelegate
 - Then we'll jump into structuring our code using views, viewmodels, repositories, models, and services
 - Next I'll show you how to construct the main list view
-- After that we'll connect our view to Firebase
-- Finally we'll wrap it up with Apple authentication
+- Finally we'll connect our view to Firebase
+
+When you're done why not stop by Toptal to see their amazing Swift developers!?
+[https://www.toptal.com/swift](https://www.toptal.com/swift)
 
 > Note: You should be comfortable with: cocoapods, Firebase console setup, and Xcode project setup. I won't be diving into these setup steps, You can get up to speed by following the following Firebase video tutorial (which also happens to be the content for this post) [SwiftUI/Firebase Video Tutorial part 1](https://www.youtube.com/watch?v=4RUeW5rUcww).
 
@@ -234,6 +236,16 @@ class TaskListViewModel: ObservableObject {
 }
 ```
 
+#### Back to the TaskListView ⏱ 🏎💨
+Jump back into your `TaskListView` and lets make the following changes.
+
+Add a reference to `taskListViewModel` right under the `struct TaskListView` line.
+```swift
+struct TaskListView: View {
+    @ObservedObject var taskListViewModel = TaskListViewModel()
+    ...
+```
+
 #### Now update your `ToDoFirebaseApp.swift` `body` with our `TaskListView`.
 ```swift
 var body: some Scene {
@@ -242,5 +254,130 @@ var body: some Scene {
     }
 }
 ```
+
+Next, update the ForEach.
+```swift
+ForEach(taskListViewModel.taskCellViewModels) { taskCellViewModel in
+    TaskCell(taskCellViewModel: taskCellViewModel)
+}
+```
+
+> Wait... what TaskCell?? We'll add that now.
+
+#### TaskCell! 🎉
+Add the following below the `TaskListView_Previews` section
+```swift
+struct TaskCell: View {
+    @ObservedObject var taskCellViewModel: TaskCellViewModel
+    
+    var onCommit: (Task) -> (Void) = { _ in }
+    
+    var body: some View {
+        HStack {
+            Image(systemName: taskCellViewModel.task.completed ? "checkmark.circle.fill" : "circle")
+                .resizable()
+                .frame(width: 20, height: 20)
+                .onTapGesture {
+                    self.taskCellViewModel.task.completed.toggle()
+                }
+            TextField("Enter the task title", text: $taskCellViewModel.task.title, onCommit: {
+                self.onCommit(self.taskCellViewModel.task)
+            })
+        }
+    }
+}
+```
+
+Well that's great but we still don't have any data... Keep going, we're almost there!
+
+## Let's wire it up like the Cable Guy 🤖
+
+In the `TaskListView` we need to handle adding tasks.
+
+Add this line below your `taskListViewModel`.
+```swift
+@State var presentAddNewItem = false
+```
+
+After the `ForeEach` block let's add our `TaskCell` for creating new items in the list.
+```swift
+if presentAddNewItem {
+    TaskCell(taskCellViewModel: TaskCellViewModel(task: Task(title: "", completed: false))) { task in
+        self.taskListViewModel.addTask(task: task)
+        self.presentAddNewItem.toggle()
+    }
+}
+```
+
+Next, we need to update our button action.
+```swift
+Button(action: { self.presentAddNewItem.toggle() }) { // Change this line
+```
+
+#### Ok, jump back into the `TaskRepository`
+
+Time to give life to our `loadData`, `addTask`, and `updateTask` functions.
+```swift
+func loadData() {
+    guard let userId = Auth.auth().currentUser?.uid else {
+        fatalError("Unable to get user id")
+    }
+
+    db.collection("tasks")
+        .order(by: "createdTime")
+        .whereField("userId", isEqualTo: userId)
+        .addSnapshotListener { (querySnapshot, error) in
+        if let querySnapshot = querySnapshot {
+            self.tasks = querySnapshot.documents.compactMap { document in
+                do {
+                    let x = try document.data(as: Task.self)
+                    return x
+                }
+                catch {
+                    print(error.localizedDescription)
+                }
+                return nil
+            }
+        }
+    }
+}
+
+func addTask(_ task: Task) {
+    do {
+        var addedTask = task
+        addedTask.userId = Auth.auth().currentUser?.uid
+        try _ = db.collection("tasks").addDocument(from: addedTask)
+    }
+    catch {
+        fatalError("Unable to encode task \(error.localizedDescription)")
+    }
+}
+
+func updateTask(_ task: Task) {
+    if let taskID = task.id {
+        do {
+            try db.collection("tasks").document(taskID).setData(from: task)
+        }
+        catch {
+            fatalError("Unable to encode task: \(error.localizedDescription)")
+        }
+    }
+}
+```
+
+#### Last stop `ToDoFirebaseApp`
+
+Add the following above the `body`
+```swift
+init() {
+    FirebaseApp.configure()
+    Auth.auth().signInAnonymously()
+}
+```
+
+And that's it! You're now ready to add tasks to your Firebase Firestore!!
+Thanks for joining me on this adventure.
+
+You can view the entire project on [github](https://github.com/wsaults/ToDoFirebaseSwiftUI)
 
 Find top Swift development talent on [Toptal.com](https://www.toptal.com/swift).
