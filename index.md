@@ -6,6 +6,13 @@
 - iOS 14.0
 - Firebase
 
+### Here's the plan
+Today we're going to take a look at writing a simple Todo app using Swift UI that's been updated for Xcode 12 beta and iOS 14. 
+- First we'll discuss the removal of AppDelegate/SceneDelegate
+- Then we'll jump into structuring our code using views, viewmodels, repositories, models, and services
+- Next I'll show you how to construct the main list view
+- After that we'll connect our view to Firebase
+- Finally we'll wrap it up with Apple authentication
 
 
 Find top swift development talent on [Toptal.com](https://www.toptal.com/swift).
