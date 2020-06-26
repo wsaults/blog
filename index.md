@@ -14,6 +14,11 @@ Today we're going to take a look at writing a simple Todo app using Swift UI tha
 - After that we'll connect our view to Firebase
 - Finally we'll wrap it up with Apple authentication
 
+> Note: You should be comfortable with: cocoapods, Firebase console setup, and Xcode project setup. I won't be diving into these setup steps but you can get up to speed by following the following Firebase video tutorial (which also happens to be the content for this post) [SwiftUI/Firebase Video Tutorial part 1](https://www.youtube.com/watch?v=4RUeW5rUcww).
+
+
+
+
 
 Find top swift development talent on [Toptal.com](https://www.toptal.com/swift).
 
