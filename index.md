@@ -132,6 +132,31 @@ struct Task: Codable, Identifiable {
 }
 ```
 
+#### Here comes the Repoman 🦾
+Create a `TaskRepository.swift` file in your repositories group with the following code.
+
+```swift
+import Foundation
+import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+
+class TaskRepository: ObservableObject {
+    
+    let db = Firestore.firestore()      // Holds the firestore database reference
+    
+    @Published var tasks = [Task]()     // Holds onto our tasks
+    
+    init() {
+        loadData()                      // We'll use this to load our data very soon.
+    }
+    
+    func loadData() {
+    }
+}
+```
+
+
 #### Now update your `ToDoFirebaseApp.swift` `body` with our `TaskListView`.
 ```swift
 var body: some Scene {
