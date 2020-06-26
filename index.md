@@ -153,9 +153,86 @@ class TaskRepository: ObservableObject {
     
     func loadData() {
     }
+    
+    func addTask(_ task: Task) {
+    }
+    
+    func updateTask(_ task: Task) {
+    }
 }
 ```
 
+#### Knock, knock. Who's there? ViewModels. 😬
+Create a `TaskListCellViewModel.swift` and a `TaskListViewModel.swift` file in your viewModels group with the following code.
+
+```swift
+import Combine
+
+class TaskCellViewModel: ObservableObject, Identifiable {
+    @Published var taskRepository = TaskRepository()
+    
+    @Published var task: Task
+    
+    var id = ""
+    @Published var completionStateIconName = ""
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    init(task: Task) {
+        self.task = task
+        
+        $task
+        .map { task in
+            task.completed ? "checkmark.circle.fill" : "circle"
+        }
+        .assign(to: \.completionStateIconName, on: self)
+        .store(in: &cancellables)
+        
+        $task
+        .compactMap { task in
+            task.id
+        }
+        .assign(to: \.id, on: self)
+        .store(in: &cancellables)
+        
+        // Happens anytime there is a change
+        // Includes typing updates which can be intensive
+        $task
+        .dropFirst()
+        .debounce(for: 0.8, scheduler: RunLoop.main)
+        .sink { task in
+            self.taskRepository.updateTask(task)
+        }
+        .store(in: &cancellables)
+    }
+}
+```
+
+```swift
+import Foundation
+import Combine
+
+class TaskListViewModel: ObservableObject {
+    @Published var taskRepository = TaskRepository()
+    @Published var taskCellViewModels = [TaskCellViewModel]()
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    init() {
+        taskRepository.$tasks.map { tasks in
+            tasks.map { task in
+                TaskCellViewModel(task: task)
+            }
+        }
+        .assign(to: \.taskCellViewModels, on: self)
+        .store(in: &cancellables)
+    }
+    
+    func addTask(task: Task) {
+        taskRepository.addTask(task)
+    }
+}
+```
 
 #### Now update your `ToDoFirebaseApp.swift` `body` with our `TaskListView`.
 ```swift
