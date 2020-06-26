@@ -33,6 +33,19 @@ struct ToDoFirebaseApp: App {
 }
 ```
 
+### Models, Repos, and ViewModels. Oh my! 😱
+Ok, let's setup our project structure that we'll use going forward.
+
+First do the following:
+- Create a group called `App` and move the `ToDoFirebaseApp.swift` file there.
+- Create a group called `Services`
+- Create a group called `Repositories`
+- Create a group called `Models`
+- Create a group called `ViewModels`
+- Create a group called `Views`
+
+![View-ViewModel-Repo](https://drive.google.com/file/d/15DGvue5jNMBnDiaHHI7I6JzzKkXV5zUO/view?usp=sharing)
+
 ### Next stop, TaskListView! 🙌
 This view will contain the meat of our application. By the end of this post we'll be able to add, update, and complete tasks which are synced with Firebase.
 
@@ -79,21 +92,8 @@ Find top Swift development talent on [Toptal.com](https://www.toptal.com/swift).
 
 
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
 **Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
+![Image](src)
 ```
-
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
