@@ -104,15 +104,15 @@ var body: some View {
                 }
                 Button(action: {  }) {
                     HStack {
-                        Image(systemName: "plus.circle.fill")
+                        Image(systemName: "plus.circle")
                             .resizable()
                             .frame(width: 20, height: 20)
-                        Text("Add new task")
+                        Text("Add task")
                     }
                 }
                 .padding()
             }
-            .navigationBarTitle("Tasks")
+            .navigationBarTitle("Todo List")
         }
     }
 ```
@@ -176,7 +176,7 @@ class TaskCellViewModel: ObservableObject, Identifiable {
     @Published var task: Task
     
     var id = ""
-    @Published var completionStateIconName = ""
+    @Published var completionState = ""
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -187,7 +187,7 @@ class TaskCellViewModel: ObservableObject, Identifiable {
         .map { task in
             task.completed ? "checkmark.circle.fill" : "circle"
         }
-        .assign(to: \.completionStateIconName, on: self)
+        .assign(to: \.completionState, on: self)
         .store(in: &cancellables)
         
         $task
