@@ -366,6 +366,10 @@ func updateTask(_ task: Task) {
 ```
 
 #### Last stop `ToDoFirebaseApp`
+Add this line after import SwiftUI
+```swift
+import Firebase
+```
 
 Add the following above the `body`
 ```swift
